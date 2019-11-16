@@ -1,0 +1,33 @@
+{
+  "name": "smart-fihr-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/js/index.js",
+  "scripts": {
+    "start": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulkaspriskie/smart-fhir-app.git"
+  },
+  "author": "Paul Kaspriskie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulkaspriskie/smart-fhir-app/issues"
+  },
+  "homepage": "https://github.com/paulkaspriskie/smart-fhir-app#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0",
+    "chokidar": "^3.3.0",
+    "express": "^4.17.1",
+    "graceful-chokidar": "^0.1.0",
+    "node-sass": "^4.13.0",
+    "node-sass-watcher": "^0.5.1",
+    "open": "^7.0.0",
+    "uglifyify": "^5.0.2"
+  }
+}
