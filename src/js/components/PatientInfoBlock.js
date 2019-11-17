@@ -4,12 +4,11 @@ import React from 'react';
 class PatientInfoBlock extends React.Component {
 
   componentDidMount() {
-    var dataArr = Object.values(this.props.data);
-
-    dataArr[5].map((items, i) => {
+    this.props.data.map((items, i) => {
       const name = items.resource.name[0].text;
       const gender = items.resource.gender;
       const dob = items.resource.birthDate;
+      console.log(name);
     });
   }
 
