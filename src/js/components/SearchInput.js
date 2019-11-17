@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PatientInfoBlock from './PatientInfoBlock';
 
 class SearchInput extends React.Component {
 
@@ -7,7 +7,8 @@ class SearchInput extends React.Component {
     super(props);
     this.state = {
       inputValue: 'Search',
-      queryResult: {}
+      queryResult: {},
+      loadComponent: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,10 +33,14 @@ class SearchInput extends React.Component {
       })
       .then(response => response.json())
       .then(data => {
-        this.setState({ queryResult: data });
+        this.setState({
+          queryResult: data,
+          loadComponent: true
+        });
         console.log(this.state.queryResult);
       });
     }
+      
   }
 
   render() {
@@ -47,6 +52,7 @@ class SearchInput extends React.Component {
           onFocus = {() => this.setState({ inputValue: '' })}
           onChange={this.handleChange}
           onKeyDown={this.getInputValue}  />
+          {this.state.loadComponent ? <PatientInfoBlock/> : null }
       </div>
     );
   }
