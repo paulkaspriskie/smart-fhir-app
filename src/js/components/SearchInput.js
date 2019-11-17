@@ -37,10 +37,9 @@ class SearchInput extends React.Component {
           queryResult: data,
           loadComponent: true
         });
-        console.log(this.state.queryResult);
       });
     }
-      
+
   }
 
   render() {
@@ -52,7 +51,7 @@ class SearchInput extends React.Component {
           onFocus = {() => this.setState({ inputValue: '' })}
           onChange={this.handleChange}
           onKeyDown={this.getInputValue}  />
-          {this.state.loadComponent ? <PatientInfoBlock/> : null }
+          { this.state.loadComponent ? <PatientInfoBlock data={this.state.queryResult} /> : null }
       </div>
     );
   }

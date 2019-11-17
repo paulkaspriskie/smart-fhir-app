@@ -10,24 +10,36 @@ html,body {
   height: 100vh;
   width: 100vw;
   background-color: #F8F8FF;
-
-  h1 { text-align: center;}
 }
 
 .input-wrapper {
   position: relative;
-  width: 100%;
+  margin: 0 auto;
+  width: 55%;
   padding: 2rem 0;
   color: #222222;
 
   input[type=text] {
     margin: 0 auto;
     display: block;
-    padding-left: 1rem;
+    padding-left: 1%;
     height: 45px;
-    width: 55%;
+    width: 98%;
     font-size: 18pt;
     font-weight: lighter;
   }
+}
 
+.patient-info-card {
+  margin: 4rem auto 0 auto;
+  padding: 2rem 1rem;
+  width: 100%;
+  background-color: #666;
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    width: 80%;
+    text-align: center;
+  }
 }
