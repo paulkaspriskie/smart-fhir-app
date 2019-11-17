@@ -24,9 +24,7 @@ class SearchInput extends React.Component {
   getInputValue(e) {
     const url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?name=';
 
-    if(e.keyCode == 13){
-      console.log(this.state.inputValue);
-
+    if(e.keyCode == 13) {
       fetch(url + this.state.inputValue, {
         method: 'get',
         headers: { "Accept": "application/json+fhir" }
