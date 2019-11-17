@@ -5,16 +5,13 @@ class SearchInput extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { inputValue: 'Search'};
+    this.state = {
+      inputValue: 'Search',
+      queryResult: {}
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.getInputValue = this.getInputValue.bind(this);
-  }
-
-
-  componentDidMount() {
-
-
   }
 
 
@@ -24,7 +21,6 @@ class SearchInput extends React.Component {
 
 
   getInputValue(e) {
-
     const url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?name=';
 
     if(e.keyCode == 13){
@@ -35,9 +31,11 @@ class SearchInput extends React.Component {
         headers: { "Accept": "application/json+fhir" }
       })
       .then(response => response.json())
-      .then(data => { console.log(data)})
+      .then(data => {
+        this.setState({ queryResult: data });
+        console.log(this.state.queryResult);
+      });
     }
-
   }
 
   render() {
