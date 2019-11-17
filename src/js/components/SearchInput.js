@@ -5,7 +5,7 @@ class SearchInput extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { inputValue: ''};
+    this.state = { inputValue: 'Search'};
 
     this.handleChange = this.handleChange.bind(this);
     this.getInputValue = this.getInputValue.bind(this);
@@ -31,7 +31,8 @@ class SearchInput extends React.Component {
       <div className="input-wrapper">
         <input
           type="text"
-          defaultValue='Search'
+          value= {this.state.inputValue}
+          onFocus = {() => this.setState({ inputValue: '' })}
           onChange={this.handleChange}
           onKeyDown={this.getInputValue}  />
       </div>
