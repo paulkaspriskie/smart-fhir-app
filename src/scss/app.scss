@@ -40,5 +40,10 @@ html,body {
       margin: 0;
       padding: 0;
     }
+
+    &:nth-of-type(odd) {
+      background: #EEEEEF;
+    }
   }
+
 }
