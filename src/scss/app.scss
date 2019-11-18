@@ -8,7 +8,7 @@ html,body {
 }
 
 .app-container {
-  // height: 100%;
+  height: auto;
   width: 100vw;
 }
 
@@ -71,11 +71,17 @@ html,body {
     transform: translate(-50%, -50%);
 
     & > li {
-      padding: 0.5rem 0;
+      padding: 0.5rem 0.3rem;
       font-size: 12pt;
       & > a {
         color: #222222;
         font-weight: lighter;
+      }
+
+      & > span { float: right; }
+
+      &:nth-of-type(odd) {
+        background-color: #EEEEEF;
       }
     }
   }
