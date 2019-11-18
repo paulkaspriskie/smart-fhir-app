@@ -46,4 +46,29 @@ html,body {
     }
   }
 
+  button {
+    font-size: 12pt;
+  }
+
+  ul {
+    span {
+      font-size: 18pt;
+    }
+    display: none;
+    visibility: hidden;
+    background-color: #666;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    padding: 3rem 2rem;
+    font-size: 14pt;
+  }
+
+  .isVisable {
+    display: block;
+    visibility: visible;
+  }
+
 }

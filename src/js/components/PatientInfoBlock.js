@@ -6,10 +6,17 @@ class PatientInfoBlock extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      ConditionData: {},
+      isHidden: true
+    };
+
     this.onButtonClick = this.onButtonClick.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
-  onButtonClick(event) {
+  onButtonClick(event, index) {
+
     var patientId = event.target.value;
     var url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=' + patientId;
 
@@ -19,12 +26,22 @@ class PatientInfoBlock extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      if (!data.entry) {
+        alert('No conditions reported.')
+      } else {
+        this.setState({ ConditionData: data.entry});
+        this.toggleModal();
+      }
     });
   }
-//code.text
+
+  toggleModal() {
+    this.setState((prevState) => ({ isHidden: !prevState.isHidden }) )
+  }
+
 
   render() {
+
     return (
       <div className="patient-info-card">
         {
@@ -44,6 +61,17 @@ class PatientInfoBlock extends React.Component {
             )
           })
         }
+
+        <ul className={this.state.isHidden ? "" : "isVisable"}>
+          <span>Conditions:</span>
+          {
+            Object.values(this.state.ConditionData).map((items, i) => {
+              console.log(items.resource.code.text);
+              return <li key={i}><a href={'https://www.ncbi.nlm.nih.gov/pubmed/?term=' + items.resource.code.text }>{items.resource.code.text}</a></li>
+            })
+          }
+          <button onClick={this.toggleModal}>close</button>
+        </ul>
       </div>
     );
   }
