@@ -9,10 +9,20 @@ class PatientInfoBlock extends React.Component {
     this.onButtonClick = this.onButtonClick.bind(this);
   }
 
-  onButtonClick(e) {
-    console.log('test');
-  }
+  onButtonClick(event) {
+    var patientId = event.target.value;
+    var url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=' + patientId;
 
+    fetch(url, {
+      method: 'get',
+      headers: { "Accept": "application/json+fhir" }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    });
+  }
+//code.text
 
   render() {
     return (
@@ -22,13 +32,14 @@ class PatientInfoBlock extends React.Component {
             const name = items.resource.name[0].text;
             const gender = items.resource.gender;
             const dob = items.resource.birthDate;
+            const id = items.resource.id;
 
             return (
               <div key={i}>
                 <h2>{name}</h2>
                 <p>Gender: {gender}</p>
                 <p>Birthdate: {dob}</p>
-                <button onClick={this.onButtonClick}>View conditions</button>
+                <button value={id} onClick={this.onButtonClick}>View conditions</button>
               </div>
             )
           })

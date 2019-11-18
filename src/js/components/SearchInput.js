@@ -32,12 +32,13 @@ class SearchInput extends React.Component {
       })
       .then(response => response.json())
       .then(data => {
+        
         this.setState({
           queryResult: data.entry,
           loadComponent: true
         });
       });
-      
+
     }
 
   }
