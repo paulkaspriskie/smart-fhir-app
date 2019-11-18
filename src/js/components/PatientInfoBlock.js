@@ -15,8 +15,7 @@ class PatientInfoBlock extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
 
-  onButtonClick(event, index) {
-
+  onButtonClick(event) {
     var patientId = event.target.value;
     var url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=' + patientId;
 
@@ -35,17 +34,17 @@ class PatientInfoBlock extends React.Component {
     });
   }
 
+
   toggleModal() {
     this.setState((prevState) => ({ isHidden: !prevState.isHidden }) )
   }
 
 
   render() {
-
     return (
       <div className="patient-info-card">
         {
-          this.props.data.map((items, i) => {
+          this.props.data ? this.props.data.map((items, i) => {
             const name = items.resource.name[0].text;
             const gender = items.resource.gender;
             const dob = items.resource.birthDate;
@@ -59,14 +58,13 @@ class PatientInfoBlock extends React.Component {
                 <button value={id} onClick={this.onButtonClick}>View conditions</button>
               </div>
             )
-          })
+          }) : null
         }
-
+        
         <ul className={this.state.isHidden ? "" : "isVisable"}>
           <h3>Conditions:</h3>
           {
             Object.values(this.state.ConditionData).map((items, i) => {
-              console.log(items.resource.code.text);
               return <li key={i}><a target="_blank" href={'https://www.ncbi.nlm.nih.gov/pubmed/?term=' + items.resource.code.text }>{items.resource.code.text}</a></li>
             })
           }
