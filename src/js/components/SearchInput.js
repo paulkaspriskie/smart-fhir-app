@@ -32,12 +32,11 @@ class SearchInput extends React.Component {
       })
       .then(response => response.json())
       .then(data => {
-        
         this.setState({
           queryResult: data.entry,
           loadComponent: true
         });
-      });
+      }).catch(() => alert('Please reload your browser and enter a valid name.'));
 
     }
 

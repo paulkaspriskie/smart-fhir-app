@@ -15,4 +15,4 @@ $ npm start
 ```
 > Search patients by name
 ```
-> Ex. Chris Brainerd
+Ex. Paula Howard

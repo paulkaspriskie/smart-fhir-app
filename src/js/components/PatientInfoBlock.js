@@ -63,11 +63,11 @@ class PatientInfoBlock extends React.Component {
         }
 
         <ul className={this.state.isHidden ? "" : "isVisable"}>
-          <span>Conditions:</span>
+          <h3>Conditions:</h3>
           {
             Object.values(this.state.ConditionData).map((items, i) => {
               console.log(items.resource.code.text);
-              return <li key={i}><a href={'https://www.ncbi.nlm.nih.gov/pubmed/?term=' + items.resource.code.text }>{items.resource.code.text}</a></li>
+              return <li key={i}><a target="_blank" href={'https://www.ncbi.nlm.nih.gov/pubmed/?term=' + items.resource.code.text }>{items.resource.code.text}</a></li>
             })
           }
           <button onClick={this.toggleModal}>close</button>
