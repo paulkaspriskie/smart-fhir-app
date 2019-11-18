@@ -9,7 +9,7 @@ $ git clone https://github.com/paulkaspriskie/smart-fhir-app.git
 ```
 $ npm install
 ```
-> Run dev server
+> Run dev server & Open browser to http://localhost:3000/ (should open automatically)
 ```
 $ npm start  
 ```
