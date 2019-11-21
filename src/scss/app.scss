@@ -10,6 +10,11 @@ html,body {
 .app-container {
   height: auto;
   width: 100vw;
+
+  .isVisable {
+    display: block;
+    visibility: visible;
+  }
 }
 
 .input-wrapper {
@@ -28,11 +33,22 @@ html,body {
     font-size: 18pt;
     font-weight: lighter;
   }
+
+  & > img {
+    display: none;
+    position: absolute;
+    margin: auto;
+    padding-top: 4rem;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+  }
 }
 
 .patient-info-card {
   margin: 4rem auto 0 auto;
   width: 100%;
+  height: auto;
 
   & > div {
     padding: 1.5rem 2rem;
@@ -92,10 +108,5 @@ html,body {
     margin-top: 1.5rem;
     padding: 1rem 2rem;
     font-size: 14pt;
-  }
-
-  .isVisable {
-    display: block;
-    visibility: visible;
   }
 }

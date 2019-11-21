@@ -8,7 +8,8 @@ class SearchInput extends React.Component {
     this.state = {
       inputValue: 'Search',
       queryResult: {},
-      loadComponent: false
+      loadComponent: false,
+      showSVG: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,6 +26,8 @@ class SearchInput extends React.Component {
     const url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?name=';
 
     if(e.keyCode == 13) {
+      this.setState({ showSVG: true });
+
       fetch(url + this.state.inputValue, {
         method: 'get',
         headers: { "Accept": "application/json+fhir" }
@@ -33,7 +36,8 @@ class SearchInput extends React.Component {
       .then(data => {
         this.setState({
           queryResult: data.entry,
-          loadComponent: true
+          loadComponent: true,
+          showSVG: false
         });
       }).catch(() => alert('Please reload your browser and enter a valid name.'));
     }
@@ -48,7 +52,8 @@ class SearchInput extends React.Component {
           onFocus = {() => this.setState({ inputValue: '' })}
           onChange={this.handleChange}
           onKeyDown={this.getInputValue}  />
-          { this.state.loadComponent ? <PatientInfoBlock data={this.state.queryResult} /> : null }
+        <img className={this.state.showSVG ? "isVisable" : ""} src="assets/icons/circles.svg" />
+        { this.state.loadComponent ? <PatientInfoBlock svgToggle={this.state.showSVG} data={this.state.queryResult} /> : null }
       </div>
     );
   }
