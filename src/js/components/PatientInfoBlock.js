@@ -45,14 +45,15 @@ class PatientInfoBlock extends React.Component {
       <div className="patient-info-card">
         {
           this.props.data ? this.props.data.map((items, i) => {
-            const name = items.resource.name[0].text;
+            const name = items.resource.name[0].text.substr(items.resource.name[0].text.indexOf(" ") + 1);
+            const fullName = name + ' ' + items.resource.name[0].text.split(' ')[0].replace(/,/g, '');
             const gender = items.resource.gender;
             const dob = items.resource.birthDate;
             const id = items.resource.id;
 
             return (
               <div key={i}>
-                <h2>{name}</h2>
+                <h2>{fullName}</h2>
                 <p>Gender: {gender}</p>
                 <p>Birthdate: {dob}</p>
                 <button value={id} onClick={this.onButtonClick}>View conditions</button>
