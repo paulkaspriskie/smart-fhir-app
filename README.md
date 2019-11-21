@@ -13,6 +13,6 @@ $ npm install
 ```
 $ npm start  
 ```
-> Search patients by name
+> Search patients by first or last name
 ```
-Ex. Paula Howard
+Ex. Paula or Smith

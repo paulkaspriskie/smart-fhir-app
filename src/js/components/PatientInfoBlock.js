@@ -17,7 +17,7 @@ class PatientInfoBlock extends React.Component {
 
   onButtonClick(event) {
     var patientId = event.target.value;
-    var url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=' + patientId;
+    const url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=' + patientId;
 
     fetch(url, {
       method: 'get',
@@ -65,7 +65,6 @@ class PatientInfoBlock extends React.Component {
           <h3>Conditions:</h3>
           {
             Object.values(this.state.ConditionData).map((items, i) => {
-              console.log(items);
               return (
                 <li key={i}>
                   <a target="_blank" href={'https://www.ncbi.nlm.nih.gov/pubmed/?term=' + items.resource.code.text }>{items.resource.code.text}</a>
