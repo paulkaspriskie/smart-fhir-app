@@ -39,7 +39,7 @@ class SearchInput extends React.Component {
           loadComponent: true,
           showSVG: false
         });
-      }).catch(() => alert('Please reload your browser and enter a valid name.'));
+      }).catch((error) => console.log(error));
     }
   }
 

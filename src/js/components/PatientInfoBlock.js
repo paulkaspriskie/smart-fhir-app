@@ -15,6 +15,7 @@ class PatientInfoBlock extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
 
+
   onButtonClick(event) {
     var patientId = event.target.value;
     const url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=' + patientId;
@@ -31,7 +32,7 @@ class PatientInfoBlock extends React.Component {
         this.setState({ ConditionData: data.entry});
         this.toggleModal();
       }
-    });
+    }).catch((error) => console.log(error));
   }
 
 
@@ -53,7 +54,7 @@ class PatientInfoBlock extends React.Component {
 
             return (
               <div key={i}>
-                <h2>{fullName.toLowerCase()}</h2>
+                <h2>{ fullName.toLowerCase() }</h2>
                 <p>Gender: {gender}</p>
                 <p>Birthdate: {dob}</p>
                 <button value={id} onClick={this.onButtonClick}>View conditions</button>
