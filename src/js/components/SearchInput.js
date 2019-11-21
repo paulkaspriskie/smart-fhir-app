@@ -26,7 +26,10 @@ class SearchInput extends React.Component {
     const url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?name=';
 
     if(e.keyCode == 13) {
-      this.setState({ showSVG: true });
+      this.setState({
+        showSVG: true,
+        loadComponent: false,
+      });
 
       fetch(url + this.state.inputValue, {
         method: 'get',
@@ -52,7 +55,7 @@ class SearchInput extends React.Component {
           onFocus = {() => this.setState({ inputValue: '' })}
           onChange={this.handleChange}
           onKeyDown={this.getInputValue}  />
-        <img className={this.state.showSVG ? "isVisable" : ""} src="assets/icons/circles.svg" />
+        <img className={this.state.showSVG ? "isVisable" : ""} src="assets/icons/grid.svg" />
         { this.state.loadComponent ? <PatientInfoBlock svgToggle={this.state.showSVG} data={this.state.queryResult} /> : null }
       </div>
     );
