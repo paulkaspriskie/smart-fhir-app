@@ -36,9 +36,11 @@ html,body {
 
   & > div {
     padding: 1.5rem 2rem;
-    h1 {
+
+    h2 {
       margin: 0;
       padding: 0;
+      text-transform: capitalize;
     }
 
     &:nth-of-type(odd) {
