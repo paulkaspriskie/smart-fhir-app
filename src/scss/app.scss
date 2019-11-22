@@ -43,6 +43,10 @@ html,body {
     right: 0;
     visibility: hidden;
   }
+
+  & > h3 {
+    margin-top: 4rem;
+  }
 }
 
 .patient-info-card {

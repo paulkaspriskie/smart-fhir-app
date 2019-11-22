@@ -5,7 +5,7 @@
 ```
 $ git clone https://github.com/paulkaspriskie/smart-fhir-app.git
 ```
-> Install node ependencies:
+> Install node dependencies:
 ```
 $ npm install
 ```

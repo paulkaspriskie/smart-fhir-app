@@ -57,7 +57,7 @@ class SearchInput extends React.Component {
           onKeyDown={this.getInputValue}  />
         <img className={this.state.showSVG ? "isVisable" : ""} src="assets/icons/grid.svg" />
         { this.state.loadComponent ? <PatientInfoBlock svgToggle={this.state.showSVG} data={this.state.queryResult} /> : null }
-        { !this.state.queryResult ? <h3>Sorry no results match {this.state.inputValue}</h3> : null }
+        { !this.state.queryResult ? <h3>Sorry no results match ''{this.state.inputValue}''</h3> : null }
       </div>
     );
   }
