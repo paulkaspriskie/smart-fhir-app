@@ -49,14 +49,20 @@ class PatientInfoBlock extends React.Component {
             const name = items.resource.name[0].text.substr(items.resource.name[0].text.indexOf(" ") + 1);
             const fullName = name + ' ' + items.resource.name[0].text.split(' ')[0].replace(/,/g, '');
             const gender = items.resource.gender;
-            const dob = items.resource.birthDate;
             const id = items.resource.id;
+
+            const dob = new Date(items.resource.birthDate);
+            const sanitizeDate = dob.toLocaleString('default', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric'
+            });
 
             return (
               <div key={i}>
                 <h2>{ fullName.toLowerCase() }</h2>
                 <p>Gender: {gender}</p>
-                <p>Birthdate: {dob}</p>
+                <p>Birthdate: {sanitizeDate}</p>
                 <button value={id} onClick={this.onButtonClick}>View conditions</button>
               </div>
             )
