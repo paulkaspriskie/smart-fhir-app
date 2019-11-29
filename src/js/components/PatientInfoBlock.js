@@ -26,12 +26,8 @@ class PatientInfoBlock extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
-      if (!data.entry) {
-        alert('No conditions reported.')
-      } else {
-        this.setState({ ConditionData: data.entry});
-        this.toggleModal();
-      }
+      !data.entry ? this.setState({ ConditionData: ''}) : this.setState({ ConditionData: data.entry});
+      this.toggleModal();
     }).catch((error) => console.log(error));
   }
 
@@ -72,6 +68,7 @@ class PatientInfoBlock extends React.Component {
         <ul className={this.state.isHidden ? "" : "isVisable"}>
           <h3>Conditions:</h3>
           {
+            Object.keys(this.state.ConditionData).length !== 0 ?
             Object.values(this.state.ConditionData).map((items, i) => {
               return (
                 <li key={i}>
@@ -79,7 +76,7 @@ class PatientInfoBlock extends React.Component {
                   <span>{items.resource.dateRecorded}</span>
                 </li>
               )
-            })
+            }) : <li>no conditions reported</li>
           }
           <button onClick={this.toggleModal}>close</button>
         </ul>
