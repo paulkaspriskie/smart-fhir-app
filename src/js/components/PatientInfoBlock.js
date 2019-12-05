@@ -42,13 +42,13 @@ class PatientInfoBlock extends React.Component {
       <div className="patient-info-card">
         {
           this.props.data ? this.props.data.map((items, i) => {
-            const name = items.resource.name[0].text.substr(items.resource.name[0].text.indexOf(" ") + 1);
-            const fullName = name + ' ' + items.resource.name[0].text.split(' ')[0].replace(/,/g, '');
-            const gender = items.resource.gender;
             const id = items.resource.id;
+            const gender = items.resource.gender;
 
-            const dob = new Date(items.resource.birthDate);
-            const sanitizeDate = dob.toLocaleString('default', {
+            var name = items.resource.name[0].text.substr(items.resource.name[0].text.indexOf(" ") + 1);
+                name = name + ' ' + items.resource.name[0].text.split(' ')[0].replace(/,/g, '');
+
+            var dob = new Date(items.resource.birthDate).toLocaleString('default', {
               month: 'long',
               day: 'numeric',
               year: 'numeric'
@@ -56,9 +56,9 @@ class PatientInfoBlock extends React.Component {
 
             return (
               <div key={i}>
-                <h2>{ fullName.toLowerCase() }</h2>
+                <h2>{ name.toLowerCase() }</h2>
                 <p>Gender: {gender}</p>
-                <p>Birthdate: {sanitizeDate}</p>
+                <p>Birthdate: {dob}</p>
                 <button value={id} onClick={this.onButtonClick}>View conditions</button>
               </div>
             )
