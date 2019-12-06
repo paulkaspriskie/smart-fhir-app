@@ -1,12 +1,12 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import SearchInput from './components/SearchInput';
+import App from './components/App';
 
 
 render(
   <div className="app-container">
-    <SearchInput />
+    <App />
   </div>,
   document.getElementById('root')
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import PatientInfoBlock from './PatientInfoBlock';
 
-class SearchInput extends React.Component {
+class App extends React.Component {
 
   constructor(props) {
     super(props);
@@ -63,4 +63,4 @@ class SearchInput extends React.Component {
   }
 }
 
-export default SearchInput;
+export default App;
