@@ -12,12 +12,12 @@ class App extends React.Component {
       showSVG: false
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.getInputValue = this.getInputValue.bind(this);
     this.submitRequest = this.submitRequest.bind(this);
   }
 
 
-  handleChange(e) {
+  getInputValue(e) {
     this.setState({ inputValue: e.target.value });
   }
 
@@ -53,7 +53,7 @@ class App extends React.Component {
           type="text"
           value= {this.state.inputValue}
           onFocus = {() => this.setState({ inputValue: '' })}
-          onChange={this.handleChange}
+          onChange={this.getInputValue}
           onKeyDown={this.submitRequest}  />
         <img className={this.state.showSVG ? "isVisable" : ""} src="assets/icons/grid.svg" />
         { this.state.loadComponent ? <PatientInfoBlock svgToggle={this.state.showSVG} data={this.state.queryResult} /> : null }
