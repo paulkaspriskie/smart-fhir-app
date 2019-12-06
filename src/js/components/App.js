@@ -13,7 +13,7 @@ class App extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.getInputValue = this.getInputValue.bind(this);
+    this.submitRequest = this.submitRequest.bind(this);
   }
 
 
@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
 
-  getInputValue(e) {
+  submitRequest(e) {
     const url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?name=';
 
     if(e.keyCode == 13) {
@@ -54,7 +54,7 @@ class App extends React.Component {
           value= {this.state.inputValue}
           onFocus = {() => this.setState({ inputValue: '' })}
           onChange={this.handleChange}
-          onKeyDown={this.getInputValue}  />
+          onKeyDown={this.submitRequest}  />
         <img className={this.state.showSVG ? "isVisable" : ""} src="assets/icons/grid.svg" />
         { this.state.loadComponent ? <PatientInfoBlock svgToggle={this.state.showSVG} data={this.state.queryResult} /> : null }
         { !this.state.queryResult ? <h3>Sorry no results match ''{this.state.inputValue}''</h3> : null }
