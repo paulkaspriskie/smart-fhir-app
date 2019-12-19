@@ -8,7 +8,6 @@ class App extends React.Component {
     this.state = {
       inputValue: 'Search',
       queryResult: {},
-      loadComponent: false,
       showSVG: false
     };
 
@@ -26,10 +25,7 @@ class App extends React.Component {
     const url = 'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?name=';
 
     if(e.keyCode == 13) {
-      this.setState({
-        showSVG: true,
-        loadComponent: false
-       });
+      this.setState({ showSVG: true });
 
       fetch(url + this.state.inputValue, {
         method: 'get',
@@ -39,7 +35,6 @@ class App extends React.Component {
       .then(data => {
         this.setState({
           queryResult: data.entry,
-          loadComponent: true,
           showSVG: false
         });
       }).catch((error) => console.log(error));
@@ -56,7 +51,7 @@ class App extends React.Component {
           onChange={this.getInputValue}
           onKeyDown={this.submitRequest}  />
         <img className={this.state.showSVG ? "isVisable" : ""} src="assets/icons/grid.svg" />
-        { this.state.loadComponent ? <PatientInfoBlock svgToggle={this.state.showSVG} data={this.state.queryResult} /> : null }
+        { Object.keys(this.state.queryResult).length !== 0 ? <PatientInfoBlock data={this.state.queryResult} /> : null }
         { !this.state.queryResult ? <h3>Sorry no results match ''{this.state.inputValue}''</h3> : null }
       </div>
     );
