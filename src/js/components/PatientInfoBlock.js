@@ -49,9 +49,9 @@ class PatientInfoBlock extends React.Component {
                 name = name + ' ' + items.resource.name[0].text.split(' ')[0].replace(/,/g, '');
 
             var dob = new Date(items.resource.birthDate).toLocaleString('default', {
-              month: 'long',
-              day: 'numeric',
-              year: 'numeric'
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
             });
 
             return (
@@ -72,7 +72,9 @@ class PatientInfoBlock extends React.Component {
             Object.values(this.state.ConditionData).map((items, i) => {
               return (
                 <li key={i}>
-                  <a target="_blank" href={'https://www.ncbi.nlm.nih.gov/pubmed/?term=' + items.resource.code.text }>{items.resource.code.text}</a>
+                  <a target="_blank" href={'https://www.ncbi.nlm.nih.gov/pubmed/?term=' + items.resource.code.text }>
+                    {items.resource.code.text}
+                  </a>
                   <span>{items.resource.dateRecorded}</span>
                 </li>
               )
